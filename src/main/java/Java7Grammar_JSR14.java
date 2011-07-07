@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+//import java.io.BufferedReader;
+//import java.io.FileInputStream;
+//import java.io.IOException;
+//import java.io.InputStreamReader;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * @author Yusuke Yamamoto - yusuke at mac.com
  */
-public class Java7Grammar {
+public class Java7Grammar_JSR14 {
     public static void main(String[] args) throws Exception {
         String specVersion = System.getProperty("java.specification.version");
         // String-switch
@@ -61,17 +61,18 @@ public class Java7Grammar {
         // multi catch
         try {
             Method method = Class.forName("Java7Grammar").getDeclaredMethod("hello", Integer.class);
-            method.invoke(Java7Grammar.class, value);
+            method.invoke(Java7Grammar_JSR14.class, value);
         } catch (NoSuchMethodException | ClassNotFoundException
                 | IllegalAccessException | InvocationTargetException e) {
             System.out.println("Boom!");
             // to make it compatible with Java 6 or earlier, do NOT touch the exception
             // otherwise you'll see : java.lang.ClassNotFoundException: java.lang.ReflectiveOperationException
-            e.printStackTrace();
-            throw e;
+//            e.printStackTrace();
+//            throw e;
         }
 
         // to make it compatible with Java 6 or earlier, you cannot use try-catch-with-resources
+/*
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("/etc/hosts")))) {
             String line;
             while((line = br.readLine()) != null){
@@ -80,6 +81,7 @@ public class Java7Grammar {
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
+*/
     }
 
     public static void hello(Integer value) {
