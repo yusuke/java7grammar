@@ -60,6 +60,7 @@ public class Java7Grammar {
         } catch (NoSuchMethodException | ClassNotFoundException
                 | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
+            throw e;
         }
     }
 
